@@ -5,9 +5,10 @@ from ordenamientos import ordenar_paises
 from estadisticas import mostrar_estadisticas
 from utils import limpiar_pantalla, mostrar_menu
 from validaciones import validar_opcion
-
+from utils import guardar_paises_csv
 def main():
     paises = obtener_todos_paises()
+    guardar_paises_csv(paises)
     if not paises:
         print("No se pudieron obtener los datos.")
         return

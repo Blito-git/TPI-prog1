@@ -6,7 +6,10 @@ from estadisticas import mostrar_estadisticas
 from utils import limpiar_pantalla, mostrar_menu
 from validaciones import validar_opcion
 from utils import guardar_paises_csv
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4b681d591718c7d6dc3bd8ced57ebce1a5de6c3e
 def main():
     paises = obtener_todos_paises()
     guardar_paises_csv(paises)

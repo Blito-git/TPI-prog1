@@ -37,6 +37,7 @@ def guardar_paises_csv(paises, nombre_archivo="paises.csv"):
 
     except Exception as e:
         print(f"\n Error al guardar el archivo CSV: {e}\n")
+<<<<<<< HEAD
 def mostrar_paises_paginados(paises, elementos_por_pagina=10):
     if not paises:
         print("\nNo hay países para mostrar.\n")
@@ -74,3 +75,5 @@ def mostrar_paises_paginados(paises, elementos_por_pagina=10):
             break
         else:
             print("Opción inválida. Intenta nuevamente.")
+=======
+>>>>>>> 4b681d591718c7d6dc3bd8ced57ebce1a5de6c3e

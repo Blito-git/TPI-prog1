@@ -1,3 +1,5 @@
+from utils import mostrar_paises_paginados
+
 def ordenar_paises(paises):
     print("Opciones de ordenamiento:")
     print("1. Por nombre")
@@ -6,7 +8,6 @@ def ordenar_paises(paises):
 
     opcion = input("Seleccione una opción: ").strip()
     orden = input("Ascendente (A) o Descendente (D): ").strip().lower()
-
     reverse = True if orden == "d" else False
 
     if opcion == "1":
@@ -20,5 +21,4 @@ def ordenar_paises(paises):
         return
 
     paises_ordenados = sorted(paises, key=key_func, reverse=reverse)
-    for p in paises_ordenados:
-        print(f"- {p['name']['common']} | Población: {p.get('population', 'N/A')} | Superficie: {p.get('area', 'N/A')}")
+    mostrar_paises_paginados(paises_ordenados)

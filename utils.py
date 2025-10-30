@@ -2,6 +2,38 @@ from colorama import Fore, Style, init
 init(autoreset=True)
 
 import os
+import readchar
+
+def seleccionar_opcion_menu():
+    opciones = [
+        "Buscar país por nombre",
+        "Filtrar países por continente",
+        "Filtrar países por rango de población",
+        "Filtrar países por rango de superficie",
+        "Ordenar países",
+        "Mostrar estadísticas",
+        "Salir"
+    ]
+    seleccion = 0
+
+    while True:
+        limpiar_pantalla()
+        print(Fore.CYAN + "===== MENÚ PRINCIPAL =====" + Style.RESET_ALL)
+        for i, opcion in enumerate(opciones):
+            if i == seleccion:
+                print(Fore.YELLOW + f"> {i+1}. {opcion}" + Style.RESET_ALL)
+            else:
+                print(f"  {i+1}. {opcion}")
+
+        tecla = readchar.readkey()
+
+        if tecla == readchar.key.UP and seleccion > 0:
+            seleccion -= 1
+        elif tecla == readchar.key.DOWN and seleccion < len(opciones) - 1:
+            seleccion += 1
+        elif tecla == readchar.key.ENTER:
+            return seleccion + 1
+
 
 def limpiar_pantalla():
     os.system("cls" if os.name == "nt" else "clear")

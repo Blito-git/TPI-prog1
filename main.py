@@ -1,3 +1,5 @@
+from colorama import Fore, Style, init
+init(autoreset=True)
 from api import obtener_todos_paises
 from busquedas import buscar_pais
 from filtros import filtrar_por_continente, filtrar_por_poblacion, filtrar_por_superficie
@@ -11,7 +13,7 @@ def main():
     paises = obtener_todos_paises()
     guardar_paises_csv(paises)
     if not paises:
-        print("No se pudieron obtener los datos.")
+        print(Fore.RED + "No se pudieron obtener los datos." + Style.RESET_ALL)
         return
 
     while True:
@@ -20,7 +22,7 @@ def main():
         opcion = input("Seleccione una opción: ").strip()
         
         if not validar_opcion(opcion):
-            input("Opción inválida. Presione Enter para continuar...")
+            input(Fore.RED + "Opción inválida. Presione Enter para continuar..." + Style.RESET_ALL)
             continue
 
         limpiar_pantalla()
@@ -38,7 +40,7 @@ def main():
         elif opcion == "6":
             mostrar_estadisticas(paises)
         elif opcion == "7":
-            print("Saliendo del programa...")
+            print(Fore.RED + "Saliendo del programa..." + Style.RESET_ALL)
             break
         
         input("\nPresione Enter para volver al menú...")

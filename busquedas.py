@@ -1,16 +1,18 @@
+from colorama import Fore, Style, init
+init(autoreset=True)
 from utils import mostrar_paises_paginados
 
 def buscar_pais(paises):
-    termino = input("Ingrese el nombre del país (o parte del nombre): ").lower()
+    termino = input(Fore.CYAN + "Ingrese el nombre del país (o parte del nombre): " + Style.RESET_ALL).lower()
     resultados = [p for p in paises if termino in p["name"]["common"].lower()]
 
     if not resultados:
-        print("\nNo se encontraron coincidencias.\n")
+        print(Fore.RED + "\nNo se encontraron coincidencias.\n" + Style.RESET_ALL)
         return
 
     # 🔹 Si hay pocos resultados, mostrar directamente sin paginación
     if len(resultados) <= 5:
-        print(f"\nSe encontraron {len(resultados)} país(es):\n")
+        print(Fore.YELLOW + f"\nSe encontraron {len(resultados)} país(es):\n" + Style.RESET_ALL)
         for pais in resultados:
             nombre = pais.get("name", {}).get("common", "Desconocido")
             poblacion = pais.get("population", "N/A")

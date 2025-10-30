@@ -1,3 +1,5 @@
+from colorama import Fore, Style, init
+init(autoreset=True)
 from utils import mostrar_paises_paginados
 
 def ordenar_paises(paises):
@@ -17,7 +19,7 @@ def ordenar_paises(paises):
     elif opcion == "3":
         key_func = lambda p: p.get("area", 0)
     else:
-        print("Opción inválida.")
+        print(Fore.RED + "Opción inválida." + Style.RESET_ALL)
         return
 
     paises_ordenados = sorted(paises, key=key_func, reverse=reverse)

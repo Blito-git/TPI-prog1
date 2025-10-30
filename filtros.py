@@ -1,13 +1,16 @@
+from colorama import Fore, Style, init
+init(autoreset=True)
+
 from utils import mostrar_paises_paginados
 
 def filtrar_por_continente(paises):
-    continente = input("Ingrese el continente (Africa, Americas, Asia, Europe, Oceania): ").capitalize()
+    continente = input(Fore.CYAN + "Ingrese el continente (Africa, Americas, Asia, Europe, Oceania): " + Style.RESET_ALL).capitalize()
     filtrados = [p for p in paises if p.get("region") == continente]
 
     if filtrados:
         mostrar_paises_paginados(filtrados)
     else:
-        print("No se encontraron países en ese continente.")
+        print(Fore.RED + "No se encontraron países en ese continente." + Style.RESET_ALL)
 
 def filtrar_por_poblacion(paises):
     try:
@@ -18,9 +21,9 @@ def filtrar_por_poblacion(paises):
         if filtrados:
             mostrar_paises_paginados(filtrados)
         else:
-            print("No se encontraron países en ese rango.")
+            print(Fore.RED + "No se encontraron países en ese rango." + Style.RESET_ALL)
     except ValueError:
-        print("Error: Ingrese valores numéricos.")
+        print(Fore.RED + "Error: Ingrese valores numéricos." + Style.RESET_ALL)
 
 def filtrar_por_superficie(paises):
     try:
@@ -31,6 +34,6 @@ def filtrar_por_superficie(paises):
         if filtrados:
             mostrar_paises_paginados(filtrados)
         else:
-            print("No se encontraron países en ese rango.")
+            print(Fore.RED + "No se encontraron países en ese rango." + Style.RESET_ALL)
     except ValueError:
-        print("Error: Ingrese valores numéricos.")
+        print(Fore.RED + "Error: Ingrese valores numéricos." + Style.RESET_ALL)

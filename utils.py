@@ -1,17 +1,20 @@
+from colorama import Fore, Style, init
+init(autoreset=True)
+
 import os
 
 def limpiar_pantalla():
     os.system("cls" if os.name == "nt" else "clear")
 
 def mostrar_menu():
-    print("===== MENÚ PRINCIPAL =====")
-    print("1. Buscar país por nombre")
-    print("2. Filtrar países por continente")
-    print("3. Filtrar países por rango de población")
-    print("4. Filtrar países por rango de superficie")
-    print("5. Ordenar países")
-    print("6. Mostrar estadísticas")
-    print("7. Salir")
+    print(Fore.CYAN + "===== MENÚ PRINCIPAL =====" + Style.RESET_ALL)
+    print(Fore.YELLOW + "1." + Style.RESET_ALL + " Buscar país por nombre")
+    print(Fore.YELLOW + "2." + Style.RESET_ALL + " Filtrar países por continente")
+    print(Fore.YELLOW + "3." + Style.RESET_ALL + " Filtrar países por rango de población")
+    print(Fore.YELLOW + "4." + Style.RESET_ALL + " Filtrar países por rango de superficie")
+    print(Fore.YELLOW + "5." + Style.RESET_ALL + " Ordenar países")
+    print(Fore.YELLOW + "6." + Style.RESET_ALL + " Mostrar estadísticas")
+    print(Fore.RED + "7. Salir" + Style.RESET_ALL)
 import csv
 
 def guardar_paises_csv(paises, nombre_archivo="paises.csv"):
@@ -47,9 +50,10 @@ def mostrar_paises_paginados(paises, elementos_por_pagina=10):
     total_paginas = (total - 1) // elementos_por_pagina + 1
 
     while True:
+        limpiar_pantalla()
         inicio = pagina * elementos_por_pagina
         fin = inicio + elementos_por_pagina
-        print(f"\n--- Mostrando países (Página {pagina + 1} de {total_paginas}) ---\n")
+        print(Fore.GREEN + f"\n--- Mostrando países (Página {pagina + 1} de {total_paginas}) ---\n" + Style.RESET_ALL)
 
         for i, pais in enumerate(paises[inicio:fin], start=inicio + 1):
             nombre = pais.get("name", {}).get("common", "Desconocido")
@@ -71,6 +75,7 @@ def mostrar_paises_paginados(paises, elementos_por_pagina=10):
         elif opcion == "a" and pagina > 0:
             pagina -= 1
         elif opcion == "q":
+            limpiar_pantalla()
             break
         else:
-            print("Opción inválida. Intenta nuevamente.")
+            print(Fore.RED + "Opción inválida. Intenta nuevamente." + Style.RESET_ALL)
